@@ -2,7 +2,8 @@ import colors from 'vuetify/es5/util/colors';
 
 export default {
   router: {
-    mode: 'hash',
+    // uncomment for cordova release on android/ios
+    // mode: 'hash',
     middleware: 'auth.guard',
 
     extendRoutes(routes, resolve) {
@@ -145,10 +146,11 @@ export default {
   },
 
   env: {
+    domain: process.env.DOMAIN_URL || 'https://newschoolapp.com.br',
     baseUrl:
       process.env.VUE_APP_BASE_URL ||
      'https://newschoolbrapi-dev.herokuapp.com/',
-    
+
     credentials: {
       name: process.env.VUE_APP_CLIENT_CREDENTIAL_NAME || 'NEWSCHOOL@FRONT',
       secret:
@@ -163,6 +165,7 @@ export default {
       },
     },
     dateEnd: process.env.OPENING_DATE || '25/01/2020',
+
     endpoints: {
       CERTIFICATES_ME: 'api/v1/course-taken/certificates/user/',
       USER_ME: 'api/v1/user/me',
@@ -189,7 +192,9 @@ export default {
     },
     GATOKEN: process.env.GA_TOKEN,
   },
-  mode: 'spa',
+  // uncomment for cordova release on android/ios
+  // mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
